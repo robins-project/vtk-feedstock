@@ -1,5 +1,5 @@
-# {% set version = "7.1.1" %}
-{% set version = "8.1.1" %}
+{% set version = "7.1.1" %}
+# {% set version = "8.1.1" %}
 {% set build_number = 0 %}
 
 {% set minor_version = ".".join(version.split(".")[:2]) %}
@@ -11,19 +11,20 @@ package:
 source:
   url: http://www.vtk.org/files/release/{{ minor_version }}/VTK-{{ version }}.tar.gz
   fn:  VTK-{{ version }}.tar.gz
-  # sha256: 2d5cdd048540144d821715c718932591418bb48f5b6bb19becdae62339efa75a
-  sha256: 71a09b4340f0a9c58559fe946dc745ab68a866cf20636a41d97b6046cb736324
+  sha256: 2d5cdd048540144d821715c718932591418bb48f5b6bb19becdae62339efa75a
+  # sha256: 71a09b4340f0a9c58559fe946dc745ab68a866cf20636a41d97b6046cb736324
 
 build:
   number: {{ build_number }}
 
 requirements:
   build:
-    - {{ compiler("cxx") }}
+    # - {{ compiler("c") }}
+    # - {{ compiler("cxx") }}
     - cmake
     - ninja
   host:
-    - python
+    # - python
     # VTK Third Party dependencies
     - zlib
     - freetype
@@ -36,11 +37,11 @@ requirements:
     - expat
     - tbb
     - tbb-devel
-    - libnetcdf
-    - lz4-c
+    # - libnetcdf
+    # - lz4-c
   run:
-    - python
-    - future  # used in the generated python wrappers
+    # - python
+    # - future  # used in the generated python wrappers
     # VTK Third Party dependencies
     - zlib
     - freetype
@@ -52,8 +53,8 @@ requirements:
     - jsoncpp
     - expat
     - tbb
-    - libnetcdf
-    - lz4-c
+    # - libnetcdf
+    # - lz4-c
 
 about:
   home: http://www.vtk.org/
