@@ -11,6 +11,7 @@ export CXXFLAGS="$CXXFLAGS -idirafter /usr/include"
 # now we can start configuring
     # -DVTK_USE_SYSTEM_HDF5:BOOL=ON \
     # -DVTK_EXTERNAL_HDF5_IS_SHARED:BOOL=ON \
+    # -DVTK_USE_SYSTEM_LZ4:BOOL=OFF \
 cmake -G "Ninja" \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=$BUILD_CONFIG \
@@ -36,7 +37,6 @@ cmake -G "Ninja" \
     -DVTK_USE_SYSTEM_JSONCPP:BOOL=ON \
     -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=TBB \
     -DVTK_USE_SYSTEM_NETCDF:BOOL=OFF \
-    -DVTK_USE_SYSTEM_LZ4:BOOL=OFF \
     -DVTK_USE_SYSTEM_OGGTHEORA:BOOL=OFF \
     -DVTK_USE_X:BOOL=ON \
     -DOPENGL_egl_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libEGL.so \
@@ -48,7 +48,7 @@ cmake -G "Ninja" \
     -DX11_X11_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libX11.so \
     -DX11_Xext_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libXext.so \
     -DX11_Xt_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libXt.so \
-    -DCMAKE_CXX_FLAGS:STRING=-std=c++11 \
+    -DCMAKE_CXX_FLAGS:STRING=-std=c++17 \
     ..
 
 # compile & install!
