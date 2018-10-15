@@ -5,7 +5,7 @@ cd build
 
 BUILD_CONFIG=Release
 
-export CFLAGS="$CFLAGS -idirafter /usr/include"
+export CFLAGS="$CFLAGS -idirafter /usr/include -lm"
 export CXXFLAGS="$CXXFLAGS -idirafter /usr/include"
 
 # now we can start configuring
@@ -48,7 +48,6 @@ cmake -G "Ninja" \
     -DX11_X11_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libX11.so \
     -DX11_Xext_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libXext.so \
     -DX11_Xt_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libXt.so \
-    -DCMAKE_CXX_FLAGS:STRING=-std=c++17 \
     ..
 
 # compile & install!
