@@ -1,5 +1,4 @@
 {% set version = "7.1.1" %}
-# {% set version = "8.1.1" %}
 {% set build_number = 0 %}
 
 {% set minor_version = ".".join(version.split(".")[:2]) %}
@@ -12,7 +11,8 @@ source:
   url: http://www.vtk.org/files/release/{{ minor_version }}/VTK-{{ version }}.tar.gz
   fn:  VTK-{{ version }}.tar.gz
   sha256: 2d5cdd048540144d821715c718932591418bb48f5b6bb19becdae62339efa75a
-  # sha256: 71a09b4340f0a9c58559fe946dc745ab68a866cf20636a41d97b6046cb736324
+  patches:
+    - undefined.patch
 
 build:
   number: {{ build_number }}
@@ -23,12 +23,13 @@ requirements:
     # - {{ compiler("cxx") }}
     - cmake
     - ninja
+    - pkg-config
   host:
     # - python
     # VTK Third Party dependencies
     - zlib
     - freetype
-    - hdf5
+    - hdf5 {{ hdf5 }}
     - libxml2
     - libpng
     - jpeg
@@ -37,6 +38,7 @@ requirements:
     - expat
     - tbb
     - tbb-devel
+    - gtest
     # - libnetcdf
     # - lz4-c
   run:
@@ -45,7 +47,7 @@ requirements:
     # VTK Third Party dependencies
     - zlib
     - freetype
-    - hdf5
+    - hdf5 {{ hdf5 }}
     - libxml2
     - libpng
     - jpeg
