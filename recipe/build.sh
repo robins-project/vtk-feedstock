@@ -12,6 +12,7 @@ export CXXFLAGS="$CXXFLAGS -idirafter /usr/include"
 export LDFLAGS="$LDFLAGS -L/usr/lib/x86_64-linux-gnu"
 
 # now we can start configuring
+#    -DOpenGL_GL_PREFERENCE=GLVND \
 cmake -G "Ninja" \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=$BUILD_CONFIG \
@@ -39,7 +40,6 @@ cmake -G "Ninja" \
     -DVTK_USE_SYSTEM_NETCDF:BOOL=OFF \
     -DVTK_USE_SYSTEM_OGGTHEORA:BOOL=OFF \
     -DCMAKE_LIBRARY_ARCHITECTURE=x86_64-linux-gnu \
-    -DOpenGL_GL_PREFERENCE=GLVND \
     -DVTK_USE_X:BOOL=ON \
     ..
 
