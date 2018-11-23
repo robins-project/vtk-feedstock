@@ -46,4 +46,4 @@ cmake \
 
 # compile & install!
 #ninja install
-make install
+make install -j${CPU_COUNT}
