@@ -12,8 +12,9 @@ export CXXFLAGS="$CXXFLAGS -idirafter /usr/include"
 export LDFLAGS="$LDFLAGS -L/usr/lib/x86_64-linux-gnu"
 
 # now we can start configuring
+#cmake -G "Ninja" \
 #    -DOpenGL_GL_PREFERENCE=GLVND \
-cmake -G "Ninja" \
+cmake \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=$BUILD_CONFIG \
     -DCMAKE_PREFIX_PATH:PATH="${PREFIX}" \
@@ -44,4 +45,5 @@ cmake -G "Ninja" \
     ..
 
 # compile & install!
-ninja install
+#ninja install
+make install
